@@ -107,18 +107,18 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50">
-      <div className="bg-white shadow-md">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+      <div className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 py-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-800">
+            <h1 className="text-3xl font-bold text-gray-900">
               {user.role === 'parent' ? 'Parent Dashboard' : 'Teacher Dashboard'}
             </h1>
-            <p className="text-gray-600">Welcome, {user.name}</p>
+            <p className="text-gray-500 mt-1">Welcome back, {user.name}</p>
           </div>
           <button
             onClick={handleSignOut}
-            className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+            className="px-6 py-2.5 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors font-semibold"
           >
             Sign Out
           </button>
@@ -139,8 +139,8 @@ export default function Dashboard() {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div className="lg:col-span-3">
-              <div className="bg-white rounded-xl shadow-md p-4 sticky top-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">
+              <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5 sticky top-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-4">
                   {user.role === 'parent' ? 'My Children' : 'Students'}
                 </h3>
                 <div className="space-y-2">
@@ -148,9 +148,9 @@ export default function Dashboard() {
                     <button
                       key={student.id}
                       onClick={() => setSelectedStudent(student)}
-                      className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
+                      className={`w-full text-left px-4 py-3.5 rounded-lg transition-all ${
                         selectedStudent?.id === student.id
-                          ? 'bg-blue-500 text-white'
+                          ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-md'
                           : 'bg-gray-50 text-gray-800 hover:bg-gray-100'
                       }`}
                     >
@@ -166,45 +166,45 @@ export default function Dashboard() {
 
             <div className="lg:col-span-9">
               {selectedStudent && (
-                <div className="bg-white rounded-xl shadow-md">
-                  <div className="border-b border-gray-200">
-                    <div className="flex flex-wrap gap-2 p-4">
+                <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
+                  <div className="border-b border-gray-200 bg-gray-50">
+                    <div className="flex flex-wrap gap-2 p-5">
                       <button
                         onClick={() => setActiveTab('progress')}
-                        className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                        className={`px-5 py-2.5 rounded-lg font-semibold transition-all ${
                           activeTab === 'progress'
-                            ? 'bg-blue-500 text-white'
-                            : 'text-gray-600 hover:bg-gray-100'
+                            ? 'bg-white text-blue-600 shadow-sm border border-gray-200'
+                            : 'text-gray-600 hover:bg-white/50'
                         }`}
                       >
                         Progress
                       </button>
                       <button
                         onClick={() => setActiveTab('attendance')}
-                        className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                        className={`px-5 py-2.5 rounded-lg font-semibold transition-all ${
                           activeTab === 'attendance'
-                            ? 'bg-blue-500 text-white'
-                            : 'text-gray-600 hover:bg-gray-100'
+                            ? 'bg-white text-blue-600 shadow-sm border border-gray-200'
+                            : 'text-gray-600 hover:bg-white/50'
                         }`}
                       >
                         Attendance
                       </button>
                       <button
                         onClick={() => setActiveTab('milestones')}
-                        className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                        className={`px-5 py-2.5 rounded-lg font-semibold transition-all ${
                           activeTab === 'milestones'
-                            ? 'bg-blue-500 text-white'
-                            : 'text-gray-600 hover:bg-gray-100'
+                            ? 'bg-white text-blue-600 shadow-sm border border-gray-200'
+                            : 'text-gray-600 hover:bg-white/50'
                         }`}
                       >
                         Milestones
                       </button>
                       <button
                         onClick={() => setActiveTab('messages')}
-                        className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                        className={`px-5 py-2.5 rounded-lg font-semibold transition-all ${
                           activeTab === 'messages'
-                            ? 'bg-blue-500 text-white'
-                            : 'text-gray-600 hover:bg-gray-100'
+                            ? 'bg-white text-blue-600 shadow-sm border border-gray-200'
+                            : 'text-gray-600 hover:bg-white/50'
                         }`}
                       >
                         Messages
@@ -212,14 +212,14 @@ export default function Dashboard() {
                     </div>
                   </div>
 
-                  <div className="p-4 md:p-6">
+                  <div className="p-6 md:p-8">
                     {dataLoading ? (
                       <div className="text-center py-8 text-gray-600">Loading...</div>
                     ) : (
                       <>
                         {activeTab === 'progress' && (
                           <div>
-                            <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                            <h3 className="text-2xl font-bold text-gray-900 mb-6">
                               Academic Progress
                             </h3>
                             {progress.length === 0 ? (
@@ -247,7 +247,7 @@ export default function Dashboard() {
 
                         {activeTab === 'attendance' && (
                           <div>
-                            <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                            <h3 className="text-2xl font-bold text-gray-900 mb-6">
                               Attendance Records
                             </h3>
                             {attendance.length === 0 ? (
@@ -275,7 +275,7 @@ export default function Dashboard() {
 
                         {activeTab === 'milestones' && (
                           <div>
-                            <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                            <h3 className="text-2xl font-bold text-gray-900 mb-6">
                               Milestones & Achievements
                             </h3>
                             {milestones.length === 0 ? (
@@ -303,7 +303,7 @@ export default function Dashboard() {
 
                         {activeTab === 'messages' && (
                           <div>
-                            <h3 className="text-xl font-semibold text-gray-800 mb-4">Messages</h3>
+                            <h3 className="text-2xl font-bold text-gray-900 mb-6">Messages</h3>
                             {messages.length === 0 ? (
                               <p className="text-gray-500">No messages yet.</p>
                             ) : (

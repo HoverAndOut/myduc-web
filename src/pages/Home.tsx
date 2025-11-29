@@ -18,8 +18,8 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-cyan-50">
-        <div className="text-lg text-gray-600">Loading...</div>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-600 via-cyan-500 to-teal-400">
+        <div className="text-xl text-white font-semibold">Loading...</div>
       </div>
     )
   }
@@ -49,120 +49,139 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50">
-      <div className="max-w-6xl mx-auto px-4 py-8 md:py-12">
-        <div className="text-center mb-12 md:mb-16">
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-3 md:mb-4">My Duc School</h1>
-          <p className="text-lg md:text-xl text-gray-600">School of Science - Parent & Teacher Portal</p>
-        </div>
-
-        <div className="max-w-md mx-auto bg-white rounded-2xl shadow-xl p-6 md:p-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-            {isLogin ? 'Sign In' : 'Sign Up'}
-          </h2>
-
-          {error && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
-              {error}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {!isLogin && (
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-            )}
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Email
-              </label>
-              <input
-                type="email"
-                required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Password
-              </label>
-              <input
-                type="password"
-                required
-                value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-
-            {!isLogin && (
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  I am a
-                </label>
-                <select
-                  value={formData.role}
-                  onChange={(e) => setFormData({ ...formData, role: e.target.value as 'parent' | 'teacher' })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                >
-                  <option value="parent">Parent</option>
-                  <option value="teacher">Teacher</option>
-                </select>
-              </div>
-            )}
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-cyan-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? 'Processing...' : isLogin ? 'Sign In' : 'Sign Up'}
-            </button>
-          </form>
-
-          <div className="mt-6 text-center">
-            <button
-              onClick={() => {
-                setIsLogin(!isLogin)
-                setError('')
-              }}
-              className="text-blue-600 hover:text-blue-700 text-sm font-medium"
-            >
-              {isLogin ? "Don't have an account? Sign up" : 'Already have an account? Sign in'}
-            </button>
+    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-cyan-500 to-teal-400">
+      <div className="min-h-screen flex items-center justify-center px-4 py-12">
+        <div className="w-full max-w-6xl">
+          <div className="text-center mb-10">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">My Duc School</h1>
+            <p className="text-xl md:text-2xl text-white/95 font-medium">School of Science - Parent & Teacher Portal</p>
           </div>
-        </div>
 
-        <div className="mt-12 md:mt-16 max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <div className="text-center p-6 bg-white rounded-xl shadow-md">
-              <div className="text-4xl mb-4">📚</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Track Progress</h3>
-              <p className="text-gray-600">Monitor your child's academic progress and achievements</p>
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
+            <div className="bg-white rounded-2xl shadow-2xl p-8">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+                {isLogin ? 'Sign In' : 'Create Account'}
+              </h2>
+
+              {error && (
+                <div className="mb-6 p-4 bg-red-50 border-2 border-red-200 rounded-xl text-red-700 text-sm font-medium">
+                  {error}
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-5">
+                {!isLogin && (
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors outline-none text-gray-900"
+                      placeholder="Enter your full name"
+                    />
+                  </div>
+                )}
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors outline-none text-gray-900"
+                    placeholder="Enter your email"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    required
+                    value={formData.password}
+                    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors outline-none text-gray-900"
+                    placeholder="Enter your password"
+                  />
+                </div>
+
+                {!isLogin && (
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      I am a
+                    </label>
+                    <select
+                      value={formData.role}
+                      onChange={(e) => setFormData({ ...formData, role: e.target.value as 'parent' | 'teacher' })}
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors outline-none text-gray-900"
+                    >
+                      <option value="parent">Parent</option>
+                      <option value="teacher">Teacher</option>
+                    </select>
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-4 rounded-xl font-bold text-lg hover:from-blue-700 hover:to-cyan-700 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed mt-6"
+                >
+                  {isSubmitting ? 'Processing...' : isLogin ? 'Sign In' : 'Create Account'}
+                </button>
+              </form>
+
+              <div className="mt-8 text-center">
+                <button
+                  onClick={() => {
+                    setIsLogin(!isLogin)
+                    setError('')
+                  }}
+                  className="text-gray-600 hover:text-gray-900 text-sm font-semibold transition-colors"
+                >
+                  {isLogin ? "Don't have an account? Sign up" : 'Already have an account? Sign in'}
+                </button>
+              </div>
             </div>
-            <div className="text-center p-6 bg-white rounded-xl shadow-md">
-              <div className="text-4xl mb-4">📅</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Attendance</h3>
-              <p className="text-gray-600">Stay updated with daily attendance records</p>
-            </div>
-            <div className="text-center p-6 bg-white rounded-xl shadow-md">
-              <div className="text-4xl mb-4">💬</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Messages</h3>
-              <p className="text-gray-600">Communicate directly with teachers</p>
+
+            <div className="space-y-6">
+              <div className="bg-white/95 backdrop-blur rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-transform">
+                <div className="flex items-start gap-4">
+                  <div className="text-5xl">📚</div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Track Progress</h3>
+                    <p className="text-gray-600 text-base leading-relaxed">Monitor your child's academic progress, test scores, and achievements in real-time with detailed insights.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white/95 backdrop-blur rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-transform">
+                <div className="flex items-start gap-4">
+                  <div className="text-5xl">📅</div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Attendance</h3>
+                    <p className="text-gray-600 text-base leading-relaxed">Stay updated with daily attendance records and receive notifications about your child's presence.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white/95 backdrop-blur rounded-2xl shadow-xl p-8 transform hover:scale-105 transition-transform">
+                <div className="flex items-start gap-4">
+                  <div className="text-5xl">💬</div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Messages</h3>
+                    <p className="text-gray-600 text-base leading-relaxed">Communicate directly with teachers, receive important updates, and stay connected with the school.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
