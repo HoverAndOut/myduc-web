@@ -50,13 +50,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50">
-      <div className="container mx-auto px-4 py-12">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-800 mb-4">My Duc School</h1>
-          <p className="text-xl text-gray-600">School of Science - Parent & Teacher Portal</p>
+      <div className="max-w-6xl mx-auto px-4 py-8 md:py-12">
+        <div className="text-center mb-12 md:mb-16">
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-3 md:mb-4">My Duc School</h1>
+          <p className="text-lg md:text-xl text-gray-600">School of Science - Parent & Teacher Portal</p>
         </div>
 
-        <div className="max-w-md mx-auto bg-white rounded-2xl shadow-xl p-8">
+        <div className="max-w-md mx-auto bg-white rounded-2xl shadow-xl p-6 md:p-8">
           <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
             {isLogin ? 'Sign In' : 'Sign Up'}
           </h2>
@@ -147,8 +147,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-16 max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
+        <div className="mt-12 md:mt-16 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             <div className="text-center p-6 bg-white rounded-xl shadow-md">
               <div className="text-4xl mb-4">📚</div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Track Progress</h3>

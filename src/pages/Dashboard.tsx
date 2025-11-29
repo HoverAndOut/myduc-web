@@ -109,7 +109,7 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50">
       <div className="bg-white shadow-md">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <h1 className="text-2xl font-bold text-gray-800">
               {user.role === 'parent' ? 'Parent Dashboard' : 'Teacher Dashboard'}
@@ -125,7 +125,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 py-8">
         {students.length === 0 ? (
           <div className="bg-white rounded-xl shadow-md p-8 text-center">
             <div className="text-6xl mb-4">📚</div>
@@ -137,9 +137,9 @@ export default function Dashboard() {
             </p>
           </div>
         ) : (
-          <div className="grid lg:grid-cols-4 gap-6">
-            <div className="lg:col-span-1">
-              <div className="bg-white rounded-xl shadow-md p-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className="lg:col-span-3">
+              <div className="bg-white rounded-xl shadow-md p-4 sticky top-6">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4">
                   {user.role === 'parent' ? 'My Children' : 'Students'}
                 </h3>
@@ -164,11 +164,11 @@ export default function Dashboard() {
               </div>
             </div>
 
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-9">
               {selectedStudent && (
                 <div className="bg-white rounded-xl shadow-md">
                   <div className="border-b border-gray-200">
-                    <div className="flex space-x-1 p-4">
+                    <div className="flex flex-wrap gap-2 p-4">
                       <button
                         onClick={() => setActiveTab('progress')}
                         className={`px-4 py-2 rounded-lg font-medium transition-colors ${
@@ -212,7 +212,7 @@ export default function Dashboard() {
                     </div>
                   </div>
 
-                  <div className="p-6">
+                  <div className="p-4 md:p-6">
                     {dataLoading ? (
                       <div className="text-center py-8 text-gray-600">Loading...</div>
                     ) : (
